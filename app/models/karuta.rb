@@ -1,0 +1,2 @@
+class Karuta < ApplicationRecord
+end
