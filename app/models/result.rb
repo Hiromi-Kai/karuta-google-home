@@ -22,6 +22,14 @@ class Result
     end
   end
 
+  def current_context
+    if contexts.include?("question")
+      :question
+    else
+      :answer
+    end
+  end
+
   def contexts
     context_in.map{|f| f["name"] }
   end
@@ -35,11 +43,11 @@ class Result
   end
 
   def speech
-    karuta.speech(next_intent, user_answer: user_answer)
+    karuta.speech(current_context, user_answer: user_answer)
   end
 
   def display_text
-    karuta.display_text(next_intent, user_answer: user_answer)
+    karuta.display_text(current_context, user_answer: user_answer)
   end
 
   def query
