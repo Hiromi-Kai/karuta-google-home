@@ -10,7 +10,7 @@ class Karuta < ApplicationRecord
   def speech
     "<speak>読み上げます。#{self.question}</speak>"
   end
-  
+
   def display_text
     "読み上げます。#{self.question_text}"
   end
