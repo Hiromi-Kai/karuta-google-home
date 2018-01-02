@@ -4,4 +4,4 @@ json.display_text @result.display_text
 json.data @result.data
 json.source @result.source
 json.context_out @result.context_out
-json.followup_event @result.followup.event
+json.followup_event @result.followup_event
