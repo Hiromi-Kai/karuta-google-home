@@ -13,6 +13,15 @@ class Result
     end
   end
 
+  def user_answer
+    case next_intent
+      when :question
+        query
+      else
+        nil
+    end
+  end
+
   def context_in
     input["contexts"]
   end
@@ -22,11 +31,11 @@ class Result
   end
 
   def speech
-    karuta.speech
+    karuta.speech(next_intent, user_answer: user_answer)
   end
 
   def display_text
-    karuta.display_text
+    karuta.display_text(next_intent, user_answer: user_answer)
   end
 
   def query
