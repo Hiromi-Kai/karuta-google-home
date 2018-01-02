@@ -27,7 +27,7 @@ class Result
   end
 
   def context_out
-    [ { name: next_intent, lifespan: 1, parameters: {} } ]
+    #[ { name: next_intent, lifespan: 1, parameters: {} } ]
   end
 
   def speech
