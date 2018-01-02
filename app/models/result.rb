@@ -6,7 +6,7 @@ class Result
   end
 
   def next_intent
-    if context_in.include?("question")
+    if contexts.include?("question")
       :answer
     else
       :question
@@ -20,6 +20,10 @@ class Result
       else
         nil
     end
+  end
+
+  def contexts
+    context_in.map{|f| f["name"] }
   end
 
   def context_in
