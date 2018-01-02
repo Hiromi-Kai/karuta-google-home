@@ -1,5 +1,6 @@
 class RequestSolver
   attr_accessor :result
+  #TODO 将来的にはパラメータを元に出典ゲームを区別したい
   def initialize(params)
     @input = params["result"]
     karuta = fetch_karuta(input["parameters"]["debug_karuta_id"])

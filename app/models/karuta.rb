@@ -1,3 +1,4 @@
+#TODO 違うゲームを識別するために継承クラスを作る
 class Karuta < ApplicationRecord
   def question
     question_pron || question_text
