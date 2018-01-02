@@ -6,10 +6,10 @@ class Result
   end
 
   def next_intent
-    if contexts.include?("question")
-      :answer
-    else
+    if contexts.include?("answer")
       :question
+    else
+      :answer
     end
   end
 
@@ -23,10 +23,10 @@ class Result
   end
 
   def current_context
-    if contexts.include?("question")
-      :question
-    else
+    if contexts.include?("answer")
       :answer
+    else
+      :question
     end
   end
 
