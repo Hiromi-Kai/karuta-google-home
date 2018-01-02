@@ -2,6 +2,7 @@ class RequestSolver
   attr_accessor :result
   attr_reader :input
   #TODO 将来的にはパラメータを元に出典ゲームを区別したい
+  #FIXME 解答時にパラメータ使って前の問題を取得できるようにする
   def initialize(params)
     @input = params["result"]
     karuta = fetch_karuta(input["parameters"]["debug_karuta_id"])
