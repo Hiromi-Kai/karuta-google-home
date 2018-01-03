@@ -15,7 +15,7 @@ class RequestSolver
   def fetch_karuta_id
     input["parameters"]["karuta_id"]||
         input["parameters"]["debug_karuta_id"] ||
-        input["contexts"].select{|f| f["name"] == "answer"}.dig("parameters", "karuta_id")
+        input["contexts"].find{|f| f["name"] == "answer"}.dig("parameters", "karuta_id")
   end
 
 
