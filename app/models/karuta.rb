@@ -13,7 +13,7 @@ class Karuta < ApplicationRecord
       when :question
         "<speak>読み上げます。#{self.question}</speak>"
       when :answer
-        "<speak>#{answer_judge(user_answer)}。#{true_answer_text}</speak>"
+        "<speak>#{answer_judge(user_answer)}。#{true_answer_text(:speech)}</speak>"
     end
   end
 
@@ -22,7 +22,7 @@ class Karuta < ApplicationRecord
       when :question
         "読み上げます。#{self.question_text}"
       when :answer
-        "#{answer_judge(user_answer)}！#{true_answer_text}"
+        "#{answer_judge(user_answer)}！#{true_answer_text(:display_text)}"
     end
   end
 
@@ -38,7 +38,12 @@ class Karuta < ApplicationRecord
     end
   end
 
-  def true_answer_text
+  def true_answer_text(type)
+    answer =
+      case type
+        when :speech then answer_pron
+        when :display_text then answer_text
+      end
     "正解は#{answer}です。"
   end
 end
