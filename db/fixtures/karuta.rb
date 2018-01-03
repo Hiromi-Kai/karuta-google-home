@@ -8,7 +8,7 @@ end
 Karuta.seed do |s|
   s.id = 2
   s.question_text = "その心臓────貰い受ける！"
-  s.question_text = "そのしんぞうもらいうける！"
+  s.question_pron = "そのしんぞうもらいうける！"
   s.answer_text = "刺し穿つ死棘の槍"
   s.answer_pron = "ゲイ・ボルク"
 end
