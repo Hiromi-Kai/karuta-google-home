@@ -6,10 +6,16 @@ class RequestSolver
   def initialize(params)
     @input = params["result"]
     #ここでいうkaruta_idは前の問題のID
-    karuta_id = input["parameters"]["karuta_id"] || input["parameters"]["debug_karuta_id"]
+    karuta_id = fetch_karuta_id
     karuta = fetch_karuta(karuta_id)
     @result = Result.new(input, karuta)
     @google_id = params.dig("originalRequest", "data", "user", "userId")
+  end
+
+  def fetch_karuta_id
+    input["parameters"]["karuta_id"]||
+        input["parameters"]["debug_karuta_id"] ||
+        input["contexts"].select{|f| f["name"] == "answer"}.dig("parameters", "karuta_id")
   end
 
 
