@@ -5,8 +5,7 @@ class RequestSolver
   def initialize(params)
     @input = params["result"]
     #ここでいうkaruta_idは前の問題のID
-    karuta_id = fetch_karuta_id
-    karuta = fetch_karuta(karuta_id)
+    karuta = fetch_karuta(fetch_karuta_id)
     @result = Result.new(input, karuta)
     @google_id = params.dig("originalRequest", "data", "user", "userId")
   end
