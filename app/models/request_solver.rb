@@ -7,7 +7,7 @@ class RequestSolver
     @input = params["result"]
     #ここでいうkaruta_idは前の問題のID
     karuta_id = input["parameters"]["karuta_id"] || input["parameters"]["debug_karuta_id"]
-    karuta = fetch_karuta(karuta_id.to_i)
+    karuta = fetch_karuta(karuta_id)
     @result = Result.new(input, karuta)
     @google_id = params.dig("originalRequest", "data", "user", "userId")
   end
@@ -17,7 +17,7 @@ class RequestSolver
     if specified_id.blank?
       Karuta.all.sample
     else
-      Karuta.find(specified_id)
+      Karuta.find(specified_id.to_i)
     end
   end
 end
