@@ -27,7 +27,7 @@ class Karuta < ApplicationRecord
   end
 
   def correct_answer?(user_answer)
-    user_answer.tr(" ", "") == answer_pron.tr("・", "")
+    user_answer.tr(" ", "").start_with(answer_pron.tr("・", ""))
   end
 
   def answer_judge(answer)
