@@ -39,7 +39,12 @@ class Result
   end
 
   def context_out
-    #[ { name: next_intent, lifespan: 1, parameters: {} } ]
+    case next_intent
+      when :answer
+        [ { name: next_intent, lifespan: 1, parameters: { karuta_id: karuta.id } } ]
+      else
+        nil
+    end
   end
 
   def speech

@@ -5,17 +5,19 @@ class RequestSolver
   #FIXME 解答時にパラメータ使って前の問題を取得できるようにする
   def initialize(params)
     @input = params["result"]
-    karuta = fetch_karuta(input["parameters"]["debug_karuta_id"])
+    #ここでいうkaruta_idは前の問題のID
+    karuta_id = input["parameters"]["karuta_id"] || input["parameters"]["debug_karuta_id"]
+    karuta = fetch_karuta(karuta_id)
     @result = Result.new(input, karuta)
     @google_id = params.dig("originalRequest", "data", "user", "userId")
   end
 
 
-  def fetch_karuta(debug_id = nil)
-    if debug_id.blank?
+  def fetch_karuta(specified_id = nil)
+    if specified_id.blank?
       Karuta.all.sample
     else
-      Karuta.find(debug_id)
+      Karuta.find(specified_id)
     end
   end
 end
